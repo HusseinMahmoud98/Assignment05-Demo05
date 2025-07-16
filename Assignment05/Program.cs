@@ -47,12 +47,15 @@ namespace Assignment05
             //} 
             #endregion
 
+            #region MyRegion
+
             /*2. Create an enum called "Season" with the four seasons (Spring, Summer, Autumn, Winter) as its members. Write a C# program
              * that takes a season name as input from the user and displays the corresponding month range for that season. Note range for 
              * seasons ( spring march to may , summer june to august , autumn September to November , winter December to February) */
+
             Season season;
             object obj01;
-     
+
 
             do
             {
@@ -61,34 +64,35 @@ namespace Assignment05
             while (!Enum.TryParse(typeof(Season), Console.ReadLine(), true, out obj01));
 
 
-            
-                season = (Season)obj01;
 
-                if (season == Season.Spring)
-                {
-                    Console.WriteLine("Spring range: March to May");
-                }
+            season = (Season)obj01;
 
-                else if (season == Season.Summer)
-                {
-                    Console.WriteLine("Summer range: June to August");
-                }
+            if (season == Season.Spring)
+            {
+                Console.WriteLine("Spring range: March to May");
+            }
 
-                else if (season == Season.Autumn)
-                {
-                    Console.WriteLine("Autumn range: September to November");
-                }
+            else if (season == Season.Summer)
+            {
+                Console.WriteLine("Summer range: June to August");
+            }
 
-                else
-                {
-                    Console.WriteLine("Winter range: December to February");
-                }
-           
+            else if (season == Season.Autumn)
+            {
+                Console.WriteLine("Autumn range: September to November");
+            }
+
+            else
+            {
+                Console.WriteLine("Winter range: December to February");
+            }
+
+            #endregion
 
 
 
         }
-            
-        }
+
+    }
     }
 
