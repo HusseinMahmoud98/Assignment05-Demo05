@@ -18,6 +18,7 @@ namespace Demo05
             Monday,
             Tuesday,
             Wednesday,
+            Thursday,
             Friday
         }
         enum Gender
@@ -291,7 +292,7 @@ namespace Demo05
             //}
             #endregion
 
-            #region Part02
+            #region Enum Part02
             Permissions permission01 = Permissions.Read;
             permission01 ^= Permissions.Delete; //Toggle permission
             Console.WriteLine(permission01); //Delete, Read
