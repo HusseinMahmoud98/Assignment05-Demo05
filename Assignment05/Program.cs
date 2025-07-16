@@ -6,6 +6,7 @@
 
 
 
+using System.ComponentModel;
 using System.Transactions;
 
 namespace Assignment05
@@ -32,11 +33,19 @@ namespace Assignment05
             Winter
         }
 
-
+        //Read, Write, Execute, Delete
+        [Flags]
+        enum Permissions
+        {
+            Read = 8,
+            Write = 4,
+            Execute = 2,
+            Delete = 1
+        }
         static void Main(string[] args)
         {
 
-            #region Q1
+            #region Q01
             /* 1- Create an enum called "WeekDays" with the days of the week (Monday to Sunday) as its members. Then, write a C# program that
                  * prints out all the days of the week using this enum. */
 
@@ -47,50 +56,78 @@ namespace Assignment05
             //} 
             #endregion
 
-            #region MyRegion
+            #region Q02
 
             /*2. Create an enum called "Season" with the four seasons (Spring, Summer, Autumn, Winter) as its members. Write a C# program
              * that takes a season name as input from the user and displays the corresponding month range for that season. Note range for 
              * seasons ( spring march to may , summer june to august , autumn September to November , winter December to February) */
 
-            Season season;
-            object obj01;
+            //Season season;
+            //object obj01;
 
 
-            do
-            {
-                Console.Write("Enter a season name: ");
-            }
-            while (!Enum.TryParse(typeof(Season), Console.ReadLine(), true, out obj01));
+            //do
+            //{
+            //    Console.Write("Enter a season name: ");
+            //}
+            //while (!Enum.TryParse(typeof(Season), Console.ReadLine(), true, out obj01));
 
 
 
-            season = (Season)obj01;
+            //season = (Season)obj01;
 
-            if (season == Season.Spring)
-            {
-                Console.WriteLine("Spring range: March to May");
-            }
+            //if (season == Season.Spring)
+            //{
+            //    Console.WriteLine("Spring range: March to May");
+            //}
 
-            else if (season == Season.Summer)
-            {
-                Console.WriteLine("Summer range: June to August");
-            }
+            //else if (season == Season.Summer)
+            //{
+            //    Console.WriteLine("Summer range: June to August");
+            //}
 
-            else if (season == Season.Autumn)
-            {
-                Console.WriteLine("Autumn range: September to November");
-            }
+            //else if (season == Season.Autumn)
+            //{
+            //    Console.WriteLine("Autumn range: September to November");
+            //}
 
-            else
-            {
-                Console.WriteLine("Winter range: December to February");
-            }
-
+            //else
+            //{
+            //    Console.WriteLine("Winter range: December to February");
+            //}
             #endregion
 
 
 
+            #region Q03
+            /* 4 - Assign the following Permissions(Read, write, Delete, Execute) in a form of Enum. 
+             * ● Create Variable from previous Enum to Add and Remove Permission from variable, check if specific Permission is
+             * existed inside variable
+            */
+            Permissions permission01;
+            permission01 = Permissions.Read; //Assign permission
+            Console.WriteLine(permission01); //Read
+
+            permission01 |= Permissions.Write; //Add permission
+            Console.WriteLine(permission01); //Write, Read
+
+            permission01 &= ~Permissions.Read; //Remove permission
+            Console.WriteLine(permission01); //Write
+
+            permission01 ^= Permissions.Write; //Toggle permission
+            Console.WriteLine(permission01); //0
+
+            if ((permission01&Permissions.Execute) == Permissions.Execute) //Check if permission exists
+            {
+                Console.WriteLine("Execute permission is allowed");
+            }
+
+            else
+            {
+                Console.WriteLine("Execute permission is not allowed");
+            }
+
+            #endregion
         }
 
     }
