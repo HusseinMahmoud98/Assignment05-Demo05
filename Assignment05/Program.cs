@@ -7,6 +7,8 @@
 
 
 using System.ComponentModel;
+using System.Drawing;
+using System.Threading.Channels;
 using System.Transactions;
 
 namespace Assignment05
@@ -41,6 +43,13 @@ namespace Assignment05
             Write = 4,
             Execute = 2,
             Delete = 1
+        }
+
+        enum Colors 
+        {
+            Red,
+            Green,
+            Blue
         }
         static void Main(string[] args)
         {
@@ -94,42 +103,69 @@ namespace Assignment05
             //else
             //{
             //    Console.WriteLine("Winter range: December to February");
+
             //}
+
+
             #endregion
-
-
 
             #region Q03
             /* 4 - Assign the following Permissions(Read, write, Delete, Execute) in a form of Enum. 
              * ● Create Variable from previous Enum to Add and Remove Permission from variable, check if specific Permission is
              * existed inside variable
             */
-            Permissions permission01;
-            permission01 = Permissions.Read; //Assign permission
-            Console.WriteLine(permission01); //Read
+            //Permissions permission01;
+            //permission01 = Permissions.Read; //Assign permission
+            //Console.WriteLine(permission01); //Read
 
-            permission01 |= Permissions.Write; //Add permission
-            Console.WriteLine(permission01); //Write, Read
+            //permission01 |= Permissions.Write; //Add permission
+            //Console.WriteLine(permission01); //Write, Read
 
-            permission01 &= ~Permissions.Read; //Remove permission
-            Console.WriteLine(permission01); //Write
+            //permission01 &= ~Permissions.Read; //Remove permission
+            //Console.WriteLine(permission01); //Write
 
-            permission01 ^= Permissions.Write; //Toggle permission
-            Console.WriteLine(permission01); //0
+            //permission01 ^= Permissions.Write; //Toggle permission
+            //Console.WriteLine(permission01); //0
 
-            if ((permission01&Permissions.Execute) == Permissions.Execute) //Check if permission exists
+            //if ((permission01 & Permissions.Execute) == Permissions.Execute) //Check if permission exists
+            //{
+            //    Console.WriteLine("Execute permission is allowed");
+            //}
+
+            //else
+            //{
+            //    Console.WriteLine("Execute permission is not allowed");
+            //}
+
+            #endregion
+
+            #region Q04
+            /* 5. Create an enum called "Colors" with the basic colors (Red, Green, Blue) as its members. Write a C# program that takes a color name as
+             *    input from the user and displays a message indicating whether the input color is a primary color or not.
+             */
+            
+            object temp; //this variable is no use but i declared it to use tryparse function :(
+            Console.Write("Enter the color name: ");
+            
+            if (Enum.TryParse(typeof(Colors), Console.ReadLine(), true, out  temp))
             {
-                Console.WriteLine("Execute permission is allowed");
+                Console.WriteLine("You entered a primary color");
             }
 
             else
             {
-                Console.WriteLine("Execute permission is not allowed");
+                Console.WriteLine("You entered a wrong input color or non-primary color");
             }
 
             #endregion
+
+
         }
 
+
+
+
+
     }
-    }
+}
 
